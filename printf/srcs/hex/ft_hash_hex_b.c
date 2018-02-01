@@ -12,7 +12,7 @@
 
 #include "../../printf.h"
 
-char *ft_hash_hex(char *output)
+char *ft_hash_hex_b(char *output)
 {
 	char *hash;
 	char *ret;
@@ -20,7 +20,7 @@ char *ft_hash_hex(char *output)
 	{
 		hash = ft_strnew(2);
 		hash[0] = '0';
-		hash[1] = 'x';
+		hash[1] = 'X';
 		ret = ft_strjoin(hash, output);
 		free (output);
 		free (hash);

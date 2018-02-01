@@ -16,9 +16,9 @@ int	main(void)
 {
 	int a = 0;
 	int b = 0;	
-	a = ft_printf("mine: |%0# 5.lo\n", 123) - 8;
+	a = ft_printf("mine: |%-10c\n", 'a') - 8;
 	printf("mine len |%d\n", a);
-	b =    printf("orig: |%0# 5.lo\n", 123) - 8;
+	b =    printf("orig: |%-10c\n", 'a') - 8;
 	printf("orig len |%d\n", b);
 
 // ft_printf("mine: |%0 0.12d\n", 123);

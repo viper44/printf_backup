@@ -18,9 +18,9 @@ static char 	*ft_precision(char *output, t_data *data)
 	int size_precision;
 	int	size_output;
 
-	if (data->plus == 1 || output[0] == '-')
-		size_precision = data->precision + 1;
-	else
+	// if (data->plus == 1 || output[0] == '-')
+	// 	size_precision = data->precision + 1;
+	// else
 		size_precision = data->precision;
 	size_output = ft_strlen(output);
 	tmp = ft_strnew(size_precision);
@@ -32,8 +32,8 @@ static char 	*ft_precision(char *output, t_data *data)
 		tmp[size_precision--] = '0';
 	if (output[0] == '-')
 		tmp[0] = '-';
-	else if (data->plus == 1 && output[0] != '-')
-		tmp[0] = '+';
+	// else if (data->plus == 1 && output[0] != '-')
+	// 	tmp[0] = '+';
 	free(output);
 	return (tmp);
 }
@@ -44,8 +44,8 @@ static char 	*ft_width(char *tmp, t_data *data)
 	char	*tmp2;
 	char	*tmp_ret;
 
-	if (data->plus == 1 && tmp[0] != '-') 
-		tmp = ft_add_plus(tmp);	
+	// if (data->plus == 1 && tmp[0] != '-') 
+	// 	tmp = ft_add_plus(tmp);	
 	// if ((data->space == 1 && tmp[0] != '-' && tmp[0] != '+') 
 	// 	|| (data->dot != 1 && data->width < size_tmp))
 	// 	tmp = ft_add_space(tmp, data);
@@ -65,25 +65,25 @@ static char 	*ft_width(char *tmp, t_data *data)
 	return (tmp_ret);
 }
 
-static char 	*ft_plus(char *output)
-{
-	char *tmp;
-	int size_output;
-	int size_tmp;
+// static char 	*ft_plus(char *output)
+// {
+// 	char *tmp;
+// 	int size_output;
+// 	int size_tmp;
 
-	size_output = ft_strlen(output);
-	size_tmp = size_output + 1;
-	tmp = ft_strnew(size_tmp);
-	while (size_output >= 0)
-	{
-		tmp[size_tmp] = output[size_output];
-		size_tmp--;
-		size_output--;
-	}
-	tmp[0] = '+';
-	free (output);
-	return (tmp);
-}
+// 	size_output = ft_strlen(output);
+// 	size_tmp = size_output + 1;
+// 	tmp = ft_strnew(size_tmp);
+// 	while (size_output >= 0)
+// 	{
+// 		tmp[size_tmp] = output[size_output];
+// 		size_tmp--;
+// 		size_output--;
+// 	}
+// 	tmp[0] = '+';
+// 	free (output);
+// 	return (tmp);
+// }
 
 static char 	*ft_special_case(t_data *data)
 {
@@ -116,8 +116,8 @@ void	ft_aligning_number_sprava_octet (char *output, t_data *data)
 	}
 	else if (data->width > (int)ft_strlen(output))
 		tmp = ft_width(output, data);
-	else if (data->plus == 1 && *output != '-')
-		output = ft_plus(output);
+	// else if (data->plus == 1 && *output != '-')
+	// 	output = ft_plus(output);
 	// else if (data->space == 1 && *output != '-' && *output != '+')
 	// 	output = ft_add_space(output, data);
 	if (tmp != NULL)

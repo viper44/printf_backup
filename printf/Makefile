@@ -22,16 +22,22 @@ SRC_BASIC = ./srcs/basic/ft_atoi.c ./srcs/basic/ft_check_conv.c ./srcs/basic/ft_
 ./srcs/basic/ft_strlen.c ./srcs/basic/ft_strnew.c ./srcs/basic/show_data.c                         
 SRC_OCTET = ./srcs/octet/ft_aligning_number_sleva_octet.c ./srcs/octet/ft_hash.c         \
 ./srcs/octet/ft_aligning_number_sprava_octet.c ./srcs/octet/ft_output_octet.c 
+SRC_HEX = ./srcs/hex/ft_output_hex.c ./srcs/hex/ft_hash_hex.c ./srcs/hex/ft_output_hex_b.c         \
+./srcs/hex/ft_hash_hex_b.c ./srcs/hex/unsigned_itoa.base_sx.c
+SRC_UN_INT = ./srcs/unsigned_int/ft_output_un_int.c
+SRC_CHAR = ./srcs/char/ft_output_char.c
 PRINTF = ./ft_printf.c
 OBJ = ft_add_plus.o ft_add_space.o ft_aligning_number_sleva.o ft_aligning_number_sprava.o          \
 ft_kostil.o ft_output.o ft_output_number.o itoa_base.o unsigned_itoa.base.o ft_atoi.o ft_check_conv.o \
 ft_get_data.o ft_get_width.o ft_isdigit.o ft_strjoin.o ft_strlen.o ft_strnew.o show_data.o ft_printf.o \
-ft_output_octet.o ft_aligning_number_sprava_octet.o ft_aligning_number_sleva_octet.o ft_hash.o
+ft_output_octet.o ft_aligning_number_sprava_octet.o ft_aligning_number_sleva_octet.o ft_hash.o         \
+ft_output_hex.o ft_hash_hex.o ft_output_hex_b.o ft_hash_hex_b.o unsigned_itoa.base_sx.o                \
+ft_output_un_int.o ft_output_char.o
 
 all:$(NAME)
 
 $(NAME):
-		@ gcc $(FLAGS) $(SRC_BASIC) $(SRC_INT) $(SRC_OCTET) $(PRINTF) $(HDR)
+		@ gcc $(FLAGS) $(SRC_BASIC) $(SRC_CHAR) $(SRC_INT) $(SRC_UN_INT) $(SRC_HEX) $(SRC_OCTET) $(PRINTF) $(HDR)
 		@ ar rc $(NAME) $(OBJ)
 		@ /bin/rm -f $(OBJ)
 

@@ -20,4 +20,12 @@ void	ft_check_conv(const char *format, t_data *data,va_list ptr)
 		ft_output_number(data, ptr);
 	if (*format == 'o')
 		ft_output_octet(data,ptr);
+	if (*format == 'x')
+		ft_output_hex(data, ptr);
+	if (*format == 'X')
+		ft_output_hex_b(data, ptr);
+	if (*format == 'u')
+		ft_output_un_int(data, ptr);
+	if (*format == 'c')
+		ft_output_char(data, ptr);
 }

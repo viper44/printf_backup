@@ -44,6 +44,7 @@ static char 	*ft_make_str(int minus, char *ret, int base, unsigned long long int
 	}
 	if (minus == 1)
 		ret[0] = '-';
+
 	return (ret);
 }
 
@@ -58,6 +59,8 @@ char	*unsigned_itoa_base(unsigned long long int value, int base)
 	minus = 0;
 	size = 1;
 	nb = value;
+	if (value == 0)
+		size = 2;
 	while (nb != 0)
 	{
 		nb = nb / base;

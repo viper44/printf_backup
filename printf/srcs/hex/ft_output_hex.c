@@ -16,9 +16,9 @@ static int 	ft_l(t_data *data, va_list ptr)
 {
 	char *point_string;
 
-	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long int)), 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
+	point_string = unsigned_itoa_base_sx((va_arg(ptr,unsigned long int)), 16);
+	if (data->hash == 1 && point_string[0] != '0')
+		point_string = ft_hash_hex(point_string);
 	if (point_string[0] == '-')
 		data->negative = 1;
 	if (data->minus == 1)
@@ -32,9 +32,9 @@ static int 	ft_ll(t_data *data, va_list ptr)
 {
 	char *point_string;
 
-	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long long int)), 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
+	point_string = unsigned_itoa_base_sx((va_arg(ptr,unsigned long long int)), 16);
+	if (data->hash == 1 && point_string[0] != '0')
+		point_string = ft_hash_hex(point_string);
 	if (point_string[0] == '-')
 		data->negative = 1;
 	if (data->minus == 1)
@@ -51,9 +51,9 @@ static int 	ft_h(t_data *data, va_list ptr)
 
 	d = va_arg(ptr, int);
 	d = (unsigned short)d;
-	point_string = unsigned_itoa_base(d, 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
+	point_string = unsigned_itoa_base_sx(d, 16);
+	if (data->hash == 1 && point_string[0] != '0')
+		point_string = ft_hash_hex(point_string);
 	if (point_string[0] == '-')
 		data->negative = 1;
 	if (data->minus == 1)
@@ -70,9 +70,9 @@ static int 	ft_hh(t_data *data, va_list ptr)
 
 	d = va_arg(ptr, int);
 	d = (unsigned char)d;
-	point_string = unsigned_itoa_base(d, 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
+	point_string = unsigned_itoa_base_sx(d, 16);
+	if (data->hash == 1 && point_string[0] != '0')
+		point_string = ft_hash_hex(point_string);
 	if (point_string[0] == '-')
 		data->negative = 1;
 	if (data->minus == 1)
@@ -82,7 +82,7 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	return (1);
 }
 
-void	ft_output_octet(t_data *data, va_list ptr)
+void	ft_output_hex(t_data *data, va_list ptr)
 {
 	unsigned int d;
 	char *point_string;
@@ -98,9 +98,9 @@ void	ft_output_octet(t_data *data, va_list ptr)
 	else
 	{
 		d = va_arg(ptr,unsigned int);
-		point_string = unsigned_itoa_base(d, 8);
+		point_string = unsigned_itoa_base_sx(d, 16);
 		if (data->hash == 1)
-			point_string = ft_hash(point_string);
+			point_string = ft_hash_hex(point_string);
 		if (point_string[0] == '-')
 		data->negative = 1;
 	if (data->minus == 1)
