@@ -45,7 +45,7 @@ static int	ft_check(const char *format, va_list ptr)
 	data = ft_go_zero();
 	while (*format != '\0')
 	{
-		while (*format == '%' && *format != '\0')
+		while (*format != '%' && *format != '\0')
 		{
 			write (1, format, 1);
 			ret += 1;
