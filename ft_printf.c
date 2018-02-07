@@ -37,33 +37,40 @@ static t_data ft_go_zero()
 }
 
 static int	ft_check(const char *format, va_list ptr)
-{
-	t_data	data;
-	int		ret;
-
-	ret = 0;
-	data = ft_go_zero();
+{	
 	while (*format != '\0')
 	{
-		while (*format == '%' && *format != '\0')
-		{
-			write (1, format, 1);
-			ret += 1;
-			format++;
-		}
-		if (*format == '\0')
-			break;
-		if (*format == '%')
-		{
-			format++;
-			format = ft_get_data(format, &data);
-		}
-		ft_check_conv(format, &data, ptr);
-		ret += data.ret;
-		data = ft_go_zero();
-		if (*format != '\n')
-			format++;
-	}
+		write (1, format, 1);
+		format++;
+	} 
+	va_end(ptr);
+	 t_data	data;
+	 int		ret;
+
+	 ret = 0;
+	 data = ft_go_zero();
+	// while (*format != '\0')
+	// {
+	// 	while (*format == '%' && *format != '\0')
+	// 	{
+	// 		write (1, format, 1);
+	// 		ret += 1;
+	// 		format++;
+	// 	}
+	// 	if (*format == '\0')
+	// 		break;
+	// 	if (*format == '%')
+	// 	{
+	// 		format++;
+	// 		format = ft_get_data(format, &data);
+	// 	}
+	// 	ft_check_conv(format, &data, ptr);
+	// 	ret += data.ret;
+	// 	data = ft_go_zero();
+	// 	if (*format != '\n')
+	// 		format++;
+	// }
+
 	return(ret);
 }
 
