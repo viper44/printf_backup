@@ -34,7 +34,7 @@ SRC_UN_INT = ./srcs/unsigned_int/ft_output_un_int.c ./srcs/unsigned_int/ft_outpu
 SRC_CHAR = ./srcs/char/ft_output_char.c ./srcs/char/ft_output_char_uni.c                              \
 ./srcs/char/ft_aligning_char_uni_sleva.c ./srcs/char/ft_aligning_char_uni_sprava.c                    \
 
-SRC_CHAR_UNI =                                         \
+SRC_STRING_UNI = ./srcs/string_uni/ft_output_string_uni.c                                        \
 
 SRC_STRING = ./srcs/string/ft_output_string.c ./srcs/string/ft_alignin_string_sleva.c                 \
 ./srcs/string/ft_aligning_string_sprava.c
@@ -47,12 +47,13 @@ ft_output_hex.o ft_hash_hex.o ft_output_hex_b.o ft_hash_hex_b.o unsigned_itoa.ba
 ft_output_un_int.o ft_output_char.o ft_strncpy.o ft_output_string.o ft_alignin_string_sleva.o         \
 ft_strsub.o ft_aligning_string_sprava.o ft_strdup.o ft_aligning_number_sleva_hex.o                    \
 ft_aligning_number_sprava_hex.o ft_aligning_number_sleva_hex_b.o ft_aligning_number_sprava_hex_b.o    \
-ft_output_unb_int.o ft_aligning_char_uni_sleva.o ft_output_char_uni.o ft_aligning_char_uni_sprava.o
+ft_output_unb_int.o ft_aligning_char_uni_sleva.o ft_output_char_uni.o ft_aligning_char_uni_sprava.o   \
+ft_output_string_uni.o
 
 all:$(NAME)
 
 $(NAME):
-		@ gcc $(FLAGS) $(SRC_BASIC) $(SRC_CHAR) $(SRC_STRING) $(SRC_INT) $(SRC_UN_INT) $(SRC_HEX) $(SRC_OCTET) $(PRINTF) $(HDR)
+		@ gcc $(FLAGS) $(SRC_BASIC) $(SRC_CHAR) $(SRC_STRING_UNI) $(SRC_STRING) $(SRC_INT) $(SRC_UN_INT) $(SRC_HEX) $(SRC_OCTET) $(PRINTF) $(HDR)
 		@ ar rc $(NAME) $(OBJ)
 		@ /bin/rm -f $(OBJ)
 

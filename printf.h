@@ -76,6 +76,7 @@ void		ft_output_unb_int(t_data *data, va_list ptr);
 void		ft_output_hex(t_data *data, va_list ptr);
 void		ft_output_char(t_data *data, va_list ptr, const char *format);
 void		ft_output_string(t_data *data, va_list ptr);
+void		ft_output_string_uni(t_data *data, va_list ptr);
 void		ft_output_un_int(t_data *data, va_list ptr);
 void		ft_output_hex_b(t_data *data, va_list ptr);
 void		ft_output_octet(t_data *data, va_list ptr);

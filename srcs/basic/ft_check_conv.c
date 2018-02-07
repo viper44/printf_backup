@@ -26,10 +26,12 @@ void	ft_check_conv(const char *format, t_data *data,va_list ptr)
 		ft_output_un_int(data, ptr);
 	if (*format == 'c' || *format == '%')
 		ft_output_char(data, ptr, format);
-	if (*format == 's' || *format == 'S')
+	if (*format == 's')
 		ft_output_string(data, ptr);
 	if(*format == 'U')
 		ft_output_unb_int(data, ptr);
 	if (*format == 'C')
 		ft_output_char_uni(data, ptr);
+	if (*format == 'S')
+		ft_output_string_uni(data,ptr);
 }

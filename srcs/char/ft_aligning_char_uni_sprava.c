@@ -39,7 +39,7 @@ static void		ft_mask1(unsigned int nb, t_data *data)
 	if (data->width > 0)
 		data->ret = data->width + 2;
 	else
-		data->ret = 2;
+		data->ret = data->ret + 2;
 }
 
 static void		ft_mask2(unsigned int nb, t_data *data)
@@ -61,7 +61,7 @@ static void		ft_mask2(unsigned int nb, t_data *data)
 	if (data->width > 0)
 		data->ret = data->width + 3;
 	else
-		data->ret = 3;
+		data->ret = data->ret + 3;
 }
 
 static void		ft_mask3(unsigned int nb, t_data *data)
@@ -85,7 +85,7 @@ static void		ft_mask3(unsigned int nb, t_data *data)
 	if (data->width > 0)
 		data->ret = data->width + 4;
 	else
-		data->ret = 4;
+		data->ret = data->ret + 4;
 }
 
 void		ft_aligning_char_uni_sprava(int nb, t_data *data)

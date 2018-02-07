@@ -15,7 +15,9 @@
 void	ft_output_string_uni(t_data *data, va_list ptr)
 {
 	unsigned int  *array;
+	int i;
 
+	i = 0;
 	array = NULL;
 	array = va_arg(ptr,unsigned int*);
 	if (MB_CUR_MAX == 1)
@@ -23,7 +25,11 @@ void	ft_output_string_uni(t_data *data, va_list ptr)
 		data->ret = -1;
 		return ;
 	}
-	while
+	while (array[i] != '\0')
+	{
+		ft_aligning_char_uni_sprava(array[i], data);
+		i++;	
+	}
 	// if (nb > 127 && nb < 2048)
 	// 	data->width = data->width - 2;
 	// else if (nb > 2047 && nb < 65536)
