@@ -52,7 +52,8 @@ static char 	*ft_width_left(char *tmp, t_data *data)
 
 void	ft_aligning_number_sleva_octet(char *output, t_data *data)
 {
-	if ((output[0] == '0' && data->dot == 1 && data->precision == 0) || data->hash == 1)
+	if ((output[0] == '0' && data->dot == 1 && data->precision == 0) || 
+		(data->hash == 1 && ft_strlen(output) == 1))
 		output[0] = '\0';
 	if (data->precision >= (int)ft_strlen(output))
 		output = ft_precision(output, data);	
