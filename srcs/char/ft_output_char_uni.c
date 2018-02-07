@@ -18,7 +18,7 @@ void	ft_output_char_uni(t_data *data, va_list ptr)
 
 	nb = 0;
 	nb = va_arg(ptr,unsigned int);
-	if (nb > 127 && nb < 2048)
+	if (nb > 256 && nb < 2048)
 		data->width = data->width - 2;
 	else if (nb > 2047 && nb < 65536)
 		data->width = data->width - 3;

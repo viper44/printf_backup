@@ -95,7 +95,7 @@ void		ft_aligning_char_uni_sleva(int nb, t_data *data)
 
 	i = 0;
 	width = NULL;	
-	if (nb > 127 && nb < 2048)
+	if (nb > 256 && nb < 2048)
 		ft_mask1(nb, data);
 	else if (nb > 2047 && nb < 65536)
 		ft_mask2(nb, data);
