@@ -15,13 +15,13 @@
 
 int	main(void)
 {
-	// setlocale(LC_ALL, "");
+	 setlocale(LC_ALL, "");
 
 	int a = 0;
 	int b = 0;	
-	 a = ft_printf("mine: |%S\n", "ᇗᇗᇗᇗᇗ") - 8;
+	 a = ft_printf("mine: |%C\n%C", '�', '�') - 8;
 	 printf("mine len |%d\n", a);
-	 b =    printf("orig: |%s\n","ᇗᇗᇗᇗᇗ" ) - 8;
+	 b =    printf("orig: |%C\n%C", '�', '�') - 8;
 	 printf("orig len |%d\n", b);
 
 
