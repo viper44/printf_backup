@@ -17,14 +17,10 @@ static int 	ft_l(t_data *data, va_list ptr)
 	char *point_string;
 
 	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long int)), 16);
-	if (data->hash == 1 && point_string[0] != '0')
-		point_string = ft_hash_hex_b(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
+		ft_aligning_number_sleva_hex_b(point_string, data);
 	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		ft_aligning_number_sprava_hex_b(point_string, data);
 	return (1);
 }
 
@@ -33,14 +29,10 @@ static int 	ft_ll(t_data *data, va_list ptr)
 	char *point_string;
 
 	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long long int)), 16);
-	if (data->hash == 1 && point_string[0] != '0')
-		point_string = ft_hash_hex_b(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
+		ft_aligning_number_sleva_hex_b(point_string, data);
 	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		ft_aligning_number_sprava_hex_b(point_string, data);
 	return (1);
 }
 
@@ -52,14 +44,10 @@ static int 	ft_h(t_data *data, va_list ptr)
 	d = va_arg(ptr, int);
 	d = (unsigned short)d;
 	point_string = unsigned_itoa_base(d, 16);
-	if (data->hash == 1 && point_string[0] != '0')
-		point_string = ft_hash_hex_b(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
+		ft_aligning_number_sleva_hex_b(point_string, data);
 	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		ft_aligning_number_sprava_hex_b(point_string, data);
 	return (1);
 }
 
@@ -71,14 +59,10 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	d = va_arg(ptr, int);
 	d = (unsigned char)d;
 	point_string = unsigned_itoa_base(d, 16);
-	if (data->hash == 1 && point_string[0] != '0')
-		point_string = ft_hash_hex_b(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
+		ft_aligning_number_sleva_hex_b(point_string, data);
 	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		ft_aligning_number_sprava_hex_b(point_string, data);
 	return (1);
 }
 
@@ -99,13 +83,9 @@ void	ft_output_hex_b(t_data *data, va_list ptr)
 	{
 		d = va_arg(ptr,unsigned int);
 		point_string = unsigned_itoa_base(d, 16);
-		if (data->hash == 1)
-			point_string = ft_hash_hex_b(point_string);
-		if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
+		ft_aligning_number_sleva_hex_b(point_string, data);
 	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		ft_aligning_number_sprava_hex_b(point_string, data);
 	}
 }

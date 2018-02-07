@@ -79,7 +79,7 @@ void	ft_output_number(t_data *data, va_list ptr)
 	int d;
 	char *point_string;
 
-	if ((data->ll == 1 || data->z == 1) && (ft_ll(data, ptr)))
+	if ((data->ll == 1 || data->z == 1 || data->j == 1) && (ft_ll(data, ptr)))
 		return ;
 	else if ((data->l == 1) && (ft_l(data, ptr)))
 		return ;

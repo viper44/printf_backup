@@ -17,10 +17,6 @@ static int 	ft_l(t_data *data, va_list ptr)
 	char *point_string;
 
 	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long int)), 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -33,10 +29,6 @@ static int 	ft_ll(t_data *data, va_list ptr)
 	char *point_string;
 
 	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long long int)), 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -52,10 +44,6 @@ static int 	ft_h(t_data *data, va_list ptr)
 	d = va_arg(ptr, int);
 	d = (unsigned short)d;
 	point_string = unsigned_itoa_base(d, 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -71,10 +59,6 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	d = va_arg(ptr, int);
 	d = (unsigned char)d;
 	point_string = unsigned_itoa_base(d, 8);
-	if (data->hash == 1)
-		point_string = ft_hash(point_string);
-	if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -87,7 +71,7 @@ void	ft_output_octet(t_data *data, va_list ptr)
 	unsigned int d;
 	char *point_string;
 
-	if ((data->ll == 1 || data->z == 1) && (ft_ll(data, ptr)))
+	if ((data->ll == 1 || data->z == 1 || data->j == 1) && (ft_ll(data, ptr)))
 		return ;
 	else if ((data->l == 1) && (ft_l(data, ptr)))
 		return ;
@@ -99,10 +83,6 @@ void	ft_output_octet(t_data *data, va_list ptr)
 	{
 		d = va_arg(ptr,unsigned int);
 		point_string = unsigned_itoa_base(d, 8);
-		if (data->hash == 1)
-			point_string = ft_hash(point_string);
-		if (point_string[0] == '-')
-		data->negative = 1;
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else

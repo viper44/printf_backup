@@ -28,8 +28,6 @@ char *ft_hash_hex_b(char *output)
 	}
 	else
 	{
-		output[0] = '\0';
 		return (output);
 	}
-	
 }

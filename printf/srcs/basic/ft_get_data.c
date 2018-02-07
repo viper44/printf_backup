@@ -73,20 +73,6 @@ static int 	ft_valid(const char *f)
 	return (1);
 }
 
-// int	ft_percent_check(const char *f, t_data *data)
-// {
-// 	if (*f == '%')
-// 	{
-// 		f++;
-// 		if (*f == '%')
-// 		{
-// 			data->percent = 1;
-// 			return(1);
-// 		}
-// 	}
-// 	return (0);
-// }
-
 const char	*ft_get_data(const char *f,t_data *data)
 {
 	while (*f != '\0' && *f != 'c' && *f != 'd' && *f != 's' && *f != 'i'
@@ -95,8 +81,6 @@ const char	*ft_get_data(const char *f,t_data *data)
 	{
 		if (!ft_valid(f))
 			return (f);
-		// if (!ft_percent_check(f, data))
-		// 	return (f);
 		ft_get_modes(f, data);
 		if (*f == 'h')
 			f = ft_check_hh(f, data);

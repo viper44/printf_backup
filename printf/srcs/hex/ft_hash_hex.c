@@ -16,7 +16,7 @@ char *ft_hash_hex(char *output)
 {
 	char *hash;
 	char *ret;
-	if (output[0] != '0')
+	if (output[0] != '0' || ((int)ft_strlen(output) > 2))
 	{
 		hash = ft_strnew(2);
 		hash[0] = '0';
@@ -28,7 +28,6 @@ char *ft_hash_hex(char *output)
 	}
 	else
 	{
-		output[0] = '\0';
 		return (output);
 	}
 	

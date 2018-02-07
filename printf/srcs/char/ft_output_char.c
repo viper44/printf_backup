@@ -77,10 +77,19 @@ static int 	ft_l(t_data *data, va_list ptr)
 	return (1);
 }
 
-void	ft_output_char(t_data *data, va_list ptr)
+void	ft_output_char(t_data *data, va_list ptr, const char *format)
 {
 	char c;
 
+	if (*format == '%')
+	{
+		c = '%';
+	if (data->minus == 1)
+		ft_aligning_char_sleva(c, data);
+	else
+		ft_aligning_char_sprava(c, data);
+		return ;
+	}
 	if ((data->l == 1 && ft_l(data, ptr)))
 		return ;
 	else

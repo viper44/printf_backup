@@ -36,6 +36,7 @@ static char 	*ft_precision(char *output, t_data *data)
 		tmp[0] = '+';
 	else if (data->space == 1)
 		tmp[0] = ' ';
+	data->plus = 0;
 	free(output);
 	return (tmp);
 }

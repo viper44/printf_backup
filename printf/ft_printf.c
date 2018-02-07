@@ -36,7 +36,6 @@ static t_data ft_go_zero()
 	return (data);
 }
 
-
 static int	ft_check(const char *format, va_list ptr)
 {
 	t_data	data;
@@ -62,7 +61,7 @@ static int	ft_check(const char *format, va_list ptr)
 		ft_check_conv(format, &data, ptr);
 		ret += data.ret;
 		data = ft_go_zero();
-		if (*format != '\n' )
+		if (*format != '\n')
 			format++;
 	}
 	return(ret);
