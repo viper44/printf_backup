@@ -134,8 +134,8 @@ void	ft_output_string_uni(t_data *data, va_list ptr)
 	size = 0;
 	i = 0;
 	array = va_arg(ptr,unsigned int*);
-	if (!ft_MB_CUR_MAX(data))
-		return;
+	// if (!ft_MB_CUR_MAX(data))
+	// 	return;
 	if (array == NULL)
 	{
 		ft_NULL(data);
