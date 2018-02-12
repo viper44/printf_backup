@@ -12,11 +12,23 @@
 
 #include "../../printf.h"
 
+static int ft_MB_CUR_MAX(t_data *data)
+{
+	if (MB_CUR_MAX == 1)
+	{
+		data->ret = -1;
+		return (0);
+	}
+	return (1);
+}
+
 void	ft_output_char_uni(t_data *data, va_list ptr)
 {
 	unsigned int  nb;
 
 	nb = 0;
+	if (!ft_MB_CUR_MAX(data))
+		return;
 	nb = va_arg(ptr,unsigned int);
 	if (nb > 127 && nb < 2048)
 		data->width = data->width - 2;
