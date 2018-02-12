@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_output_char_uni.c                               :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/06 14:39:48 by msemenov          #+#    #+#             */
-/*   Updated: 2018/02/06 14:39:49 by msemenov         ###   ########.fr       */
+/*   Created: 2017/10/26 19:19:10 by msemenov          #+#    #+#             */
+/*   Updated: 2017/11/15 12:41:41 by msemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../printf.h"
 
-void	ft_output_char_uni(t_data *data, va_list ptr)
+void		*ft_memset(void *memptr, int val, size_t num)
 {
-	unsigned int  nb;
+	char	*s1;
+	size_t	n;
 
-	nb = 0;
-	nb = va_arg(ptr,unsigned int);
-	if (nb > 127 && nb < 2048)
-		data->width = data->width - 2;
-	else if (nb > 2047 && nb < 65536)
-		data->width = data->width - 3;
-	else if (nb > 65535)
-		data->width = data->width - 4;
-	if (data->minus == 1)
-		ft_aligning_char_uni_sleva(nb, data);
-	else
-		ft_aligning_char_uni_sprava(nb, data);
+	n = 0;
+	s1 = memptr;
+	while (n < num)
+	{
+		s1[n] = val;
+		n++;
+	}
+	return (s1);
 }

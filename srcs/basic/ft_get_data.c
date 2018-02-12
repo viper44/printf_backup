@@ -33,6 +33,7 @@ static const char	*ft_check_hh(const char *f, t_data *data)
 static const char *ft_get_precision(const char *f, t_data *data)
 {
 	data->dot = 1;
+	data->precision = 0;
 	f++;
 	if (ft_isdigit(*f))
 	{

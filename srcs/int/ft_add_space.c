@@ -17,7 +17,6 @@ char	*ft_add_space(char *tmp, t_data *data)
 	char *space;
 	char *ptr;
 
-	//printf("%s\n", "add_space");
 	ptr = tmp;
 	space = ft_strnew(1);
 	space[0] = ' ';

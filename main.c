@@ -17,14 +17,16 @@ int	main(void)
 {
 	 setlocale(LC_ALL, "");
 
+	 int i = 0;
+
 	int a = 0;
 	int b = 0;	
-	 a = ft_printf("mine: |%S\n", L"абв") - 8;
+	 a = ft_printf("mine: |%hhS, %hhS\n", 0, L"米米") - 8;
 	 printf("mine len |%d\n", a);
-	 b =    printf("orig: |%S\n", L"абв") - 8;
+	 b =    printf("orig: |%hhS, %hhS\n", 0, L"米米") - 8;
 	 printf("orig len |%d\n", b);
 
-
+//ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B
 	// a = ft_printf("mine: |%-10c\n", 'a') - 8;
 	// printf("mine len |%d\n", a);
 	// b =    printf("orig: |%C\n",L'ы') - 8;

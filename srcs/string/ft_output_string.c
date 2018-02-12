@@ -13,22 +13,26 @@
 
 #include "../../printf.h"
 
+static void ft_NULL(t_data *data)
+{
+	char *null;
+
+	null = "(null)";
+	if (data->minus == 1)
+		ft_aligning_string_sleva(null, data);
+	else
+		ft_aligning_string_sprava(null, data);
+}
+
 static int 	ft_l(t_data *data, va_list ptr)
 {
-	char *string;
-
-	string = va_arg(ptr, char*);
-	if (data->minus == 1)
-		ft_aligning_string_sleva(string, data);
-	else
-		ft_aligning_string_sprava(string, data);
+	ft_output_string_uni(data, ptr);
 	return (1);
 }
 
 void	ft_output_string(t_data *data, va_list ptr)
 {
 	char *string;
-	char *string3 = "(null)";
 
 	if ((data->l == 1 && ft_l(data, ptr)))
 		return ;
@@ -37,12 +41,8 @@ void	ft_output_string(t_data *data, va_list ptr)
 		string = va_arg(ptr, char*);
 		if (string == NULL)
 		{
-			string = ft_strdup(string3);
-			if (data->minus == 1)
-				ft_aligning_string_sleva(string, data);
-			else
-				ft_aligning_string_sprava(string, data);
-			return ;
+			ft_NULL(data);
+			 return ;
 		}
 	if (data->minus == 1)
 		ft_aligning_string_sleva(string, data);

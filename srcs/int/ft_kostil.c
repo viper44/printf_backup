@@ -54,12 +54,12 @@ char	*ft_kostil(char *tmp_ret, t_data *data)
 		tmp_ret = swap_minus(tmp_ret);
 	else if (data->space == 1)
 	{
-		while (tmp_ret[i] != '\0')
-		{
-			if (tmp_ret[i] == ' ')
-				tmp_ret[i] = '0';
-			i++;
-		}
+		// while (tmp_ret[i] != '\0')
+		// {
+		// 	if (tmp_ret[i] == ' ')
+		// 		tmp_ret[i] = '0';
+		// 	i++;
+		// }
 		tmp_ret[0] = ' ';
 	}
 	return (tmp_ret);

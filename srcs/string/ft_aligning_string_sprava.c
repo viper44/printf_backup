@@ -49,6 +49,7 @@ static	char *ft_string_precision(char *string, t_data *data)
 	char *output;
 
 	output = ft_strsub(string, 0, data->precision);
+	free (string);
 	return (output);
 }
 
@@ -59,7 +60,7 @@ void ft_aligning_string_sprava(char *string, t_data *data)
 	string2 = ft_strdup(string);
 	if (data->dot == 1)
 		string2 = ft_string_precision(string2, data);
-	if ((size_t)data->width > ft_strlen(string))
+	if ((size_t)data->width > ft_strlen(string2))
 		string2 = ft_string_width(string2, data);
 	data->ret = ft_strlen(string2);
 	write (1, string2, data->ret);

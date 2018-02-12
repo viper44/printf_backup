@@ -18,7 +18,7 @@ static void		ft_mask(unsigned int nb, t_data *data)
 	if (data->width > 0)
 		data->ret = data->width;
 	else
-		data->ret = 1;
+		data->ret = data->ret + 1;
 }
 
 static void		ft_mask1(unsigned int nb, t_data *data)
@@ -108,7 +108,7 @@ void		ft_aligning_char_uni_sprava(int nb, t_data *data)
 		write (1, width, ft_strlen(width));
 		free (width);
 	}
-	if (nb > 256 && nb < 2048)
+	if (nb > 127 && nb < 2048)
 		ft_mask1(nb, data);
 	else if (nb > 2047 && nb < 65536)
 		ft_mask2(nb, data);

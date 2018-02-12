@@ -51,9 +51,8 @@ static char 	*ft_width(char *tmp, t_data *data)
 	size_tmp = ft_strlen(tmp);
 	if (data->plus == 1 && tmp[0] != '-') 
 		tmp = ft_add_plus(tmp);	
-	if ((data->space == 1 && tmp[0] != '-' && tmp[0] != '+') 
-		|| (data->dot != 1 && data->width < size_tmp))
-		tmp = ft_add_space(tmp, data);
+	// if ((data->space == 1 && tmp[0] != '-' && tmp[0] != '+'))
+	// 	tmp = ft_add_space(tmp, data);
 	tmp2 = ft_strnew(size_tmp2 = data->width - ft_strlen(tmp));
 	size_tmp2 -= 1;
 	if (data->width > 0 && (data->zero == 0 || data->dot == 1))
@@ -62,8 +61,9 @@ static char 	*ft_width(char *tmp, t_data *data)
 	else if (data->precision == 0 && data->zero == 1 && data->dot == 0)
 		while (size_tmp2 >= 0)
 			tmp2[size_tmp2--] = '0';
-	tmp_ret = ft_strjoin (tmp2, tmp);	
-	if ((data->plus == 1 || data->negative == 1) && data->dot != 1 && data->precision == 0 && data->zero == 1)
+	tmp_ret = ft_strjoin (tmp2, tmp);
+	if ((data->plus == 1 || data->negative == 1 || data->space == 1) 
+		&& data->dot != 1 && data->precision == 0 && data->zero == 1)
 		tmp_ret = ft_kostil(tmp_ret, data);
 	free (tmp2);
 	free (tmp);

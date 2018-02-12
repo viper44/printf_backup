@@ -12,12 +12,22 @@
 
 #include "../../printf.h"
 
-void	ft_check_conv(const char *format, t_data *data,va_list ptr)
+static int		ft_valid(char const *f)
+{
+	if (*f == 'd' || *f == 'i' || *f == 'D' || *f == 'o' || *f == 'x' ||
+		*f == 'X' || *f == 'u' || *f == 'c' || *f == '%' || *f == 's' ||
+		*f == 'U' || *f == 'C' || *f == 'S' || *f == 'p' || *f == 'O')
+		return (1);
+	else
+		return (0);
+}
+
+const char	*ft_check_conv(const char *format, t_data *data,va_list ptr)
 {
 	if (*format == 'd' || *format == 'i' || *format == 'D')
-		ft_output_number(data, ptr);
-	if (*format == 'o')
-		ft_output_octet(data,ptr);
+		ft_output_number(data, ptr, format);
+	if (*format == 'o' || *format == 'O')
+		ft_output_octet(data,ptr, format);
 	if (*format == 'x')
 		ft_output_hex(data, ptr);
 	if (*format == 'X')
@@ -34,4 +44,9 @@ void	ft_check_conv(const char *format, t_data *data,va_list ptr)
 		ft_output_char_uni(data, ptr);
 	if (*format == 'S')
 		ft_output_string_uni(data,ptr);
+	if (*format == 'p')
+		ft_output_pointer(data,ptr);
+	if (ft_valid(format))
+		format++;
+	return(format);
 }

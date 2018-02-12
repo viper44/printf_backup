@@ -66,11 +66,13 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	return (1);
 }
 
-void	ft_output_octet(t_data *data, va_list ptr)
+void	ft_output_octet(t_data *data, va_list ptr, const char *format)
 {
 	unsigned int d;
 	char *point_string;
 
+	if (*format == 'O' && ft_ll(data, ptr))
+		return ;
 	if ((data->ll == 1 || data->z == 1 || data->j == 1) && (ft_ll(data, ptr)))
 		return ;
 	else if ((data->l == 1) && (ft_l(data, ptr)))

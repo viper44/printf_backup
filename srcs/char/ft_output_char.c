@@ -12,75 +12,18 @@
 
 #include "../../printf.h"
 
-static int ft_aligning_char_sleva(char c, t_data *data)
-{
-	char *width;
-	int i;
-
-	i = 0;
-	width = NULL;
-	if (data->width > 0)
-	{
-		width = ft_strnew(data->width);
-		width[data->width - 1] = '\0';
-		while (i < (data->width - 1))
-		{
-			width[i] = ' ';
-			i++;
-		}
-		write (1, &c, 1);
-		write (1, width, ft_strlen(width));
-		data->ret = (int)ft_strlen(width) + 1;
-		free (width);
-		return(0);
-	}
-	write (1, &c, 1);
-	data->ret = 1;
-	return (0);
-}
-
-static int ft_aligning_char_sprava(char c, t_data *data)
-{
-	char *width;
-	int i;
-
-	i = 0;
-	width = NULL;
-	if (data->width > 0)
-	{
-		width = ft_strnew(data->width);
-		width[data->width - 1] = '\0';
-		while (i < (data->width - 1))
-		{
-			width[i] = ' ';
-			i++;
-		}
-		write (1, width, ft_strlen(width));
-		write (1, &c, 1);
-		data->ret = (int)ft_strlen(width) + 1;
-		free (width);
-		return(0);
-	}
-	write (1, &c, 1);
-	data->ret = 1;
-	return (0);
-}
 static int 	ft_l(t_data *data, va_list ptr)
 {
-	char c;
-
-	c = (char) va_arg(ptr, int);
-	if (data->minus == 1)
-		ft_aligning_char_sleva(c, data);
-	else
-		ft_aligning_char_sprava(c, data);
+	ft_output_char_uni(data, ptr);
 	return (1);
 }
 
-void	ft_output_char(t_data *data, va_list ptr, const char *format)
+void	ft_output_char(t_data *data, va_list ptr, char const *format)
 {
 	char c;
-
+	
+	if ((data->l == 1 && ft_l(data, ptr)))
+		return ;
 	if (*format == '%')
 	{
 		c = '%';
@@ -90,8 +33,7 @@ void	ft_output_char(t_data *data, va_list ptr, const char *format)
 		ft_aligning_char_sprava(c, data);
 		return ;
 	}
-	if ((data->l == 1 && ft_l(data, ptr)))
-		return ;
+
 	else
 	{
 		c = va_arg(ptr, int);

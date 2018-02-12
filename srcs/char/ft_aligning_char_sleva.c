@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_output_char_uni.c                               :+:      :+:    :+:   */
+/*   ft_aligning_char_sleva.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/06 14:39:48 by msemenov          #+#    #+#             */
-/*   Updated: 2018/02/06 14:39:49 by msemenov         ###   ########.fr       */
+/*   Created: 2018/02/08 14:20:59 by msemenov          #+#    #+#             */
+/*   Updated: 2018/02/08 14:21:00 by msemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../printf.h"
 
-void	ft_output_char_uni(t_data *data, va_list ptr)
+void ft_aligning_char_sleva(char c, t_data *data)
 {
-	unsigned int  nb;
+	char *width;
+	int i;
 
-	nb = 0;
-	nb = va_arg(ptr,unsigned int);
-	if (nb > 127 && nb < 2048)
-		data->width = data->width - 2;
-	else if (nb > 2047 && nb < 65536)
-		data->width = data->width - 3;
-	else if (nb > 65535)
-		data->width = data->width - 4;
-	if (data->minus == 1)
-		ft_aligning_char_uni_sleva(nb, data);
-	else
-		ft_aligning_char_uni_sprava(nb, data);
+	i = 0;
+	width = NULL;
+	if (data->width > 0)
+	{
+		width = ft_strnew(data->width);
+		width[data->width - 1] = '\0';
+		while (i < (data->width - 1))
+		{
+			width[i] = ' ';
+			i++;
+		}
+		write (1, &c, 1);
+		write (1, width, ft_strlen(width));
+		data->ret = (int)ft_strlen(width) + 1;
+		free (width);
+		return;
+	}
+	write (1, &c, 1);
+	data->ret = 1;
+	return;
 }

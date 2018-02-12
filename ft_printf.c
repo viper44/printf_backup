@@ -36,33 +36,51 @@ static t_data ft_go_zero()
 	return (data);
 }
 
+static int	ft_c(const char *f, t_data *data)
+{
+	if (*f == 'd' || *f == 'i' || *f == 'D' || *f == 'o' || *f == 'x' ||
+		*f == 'X' || *f == 'u' || *f == 'c' || *f == '%' || *f == 's' ||
+		*f == 'U' || *f == 'C' || *f == 'S' || *f == 'p' || *f == 'O')
+		return (1);
+	else
+	{
+		char c;
+
+		c = *f;
+		if (data->minus == 1)
+			ft_aligning_char_sleva(c, data);
+		else
+			ft_aligning_char_sprava(c, data);
+		return (0);
+	}
+}
+
+
 static int	ft_check(const char *format, va_list ptr)
 {
 	t_data	data;
 	int		ret;
 
 	ret = 0;
-	data = ft_go_zero();
+	
 	while (*format != '\0')
 	{
+		data = ft_go_zero();
 		while (*format != '%' && *format != '\0')
 		{
 			write (1, format, 1);
 			ret += 1;
 			format++;
 		}
-		if (*format == '\0')
-			break;
 		if (*format == '%')
 		{
 			format++;
 			format = ft_get_data(format, &data);
-		}
-		ft_check_conv(format, &data, ptr);
+		}		
+		if (*format == '\0')
+			break;
+		(!(ft_c(format, &data))) ? (format += 1) : (format = ft_check_conv(format, &data, ptr));
 		ret += data.ret;
-		data = ft_go_zero();
-		if (*format != '\n')
-			format++;
 	}
 	return(ret);
 }
