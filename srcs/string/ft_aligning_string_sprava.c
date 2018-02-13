@@ -12,48 +12,37 @@
 
 #include "../../printf.h"
 
-static	char *ft_string_width(char *string, t_data *data)
+static	char	*ft_string_width(char *string, t_data *data)
 {
-	char *tmp = NULL;
-	int	i;
-	char *del_me;
+	char	*tmp;
+	int		i;
+	char	*del_me;
 
-	
 	i = 0;
 	del_me = string;
 	tmp = ft_strnew((data->width) - (int)ft_strlen(string));
 	if (data->zero == 0)
-	{
 		while (i < (data->width - (int)ft_strlen(string)))
-		{
-			tmp[i] = ' ';
-			i++;
-		}
-	}
+			tmp[i++] = ' ';
 	else
-	{
 		while (i < (data->width - (int)ft_strlen(string)))
-		{
-			tmp[i] = '0';
-			i++;
-		}
-	}
-	 string = ft_strjoin(tmp, string);
-	 free(tmp);
-	 free(del_me);
-	 return (string);
+			tmp[i++] = '0';
+	string = ft_strjoin(tmp, string);
+	free(tmp);
+	free(del_me);
+	return (string);
 }
 
-static	char *ft_string_precision(char *string, t_data *data)
+static	char	*ft_string_precision(char *string, t_data *data)
 {
 	char *output;
 
 	output = ft_strsub(string, 0, data->precision);
-	free (string);
+	free(string);
 	return (output);
 }
 
-void ft_aligning_string_sprava(char *string, t_data *data)
+void			ft_aligning_string_sprava(char *string, t_data *data)
 {
 	char *string2;
 
@@ -63,5 +52,6 @@ void ft_aligning_string_sprava(char *string, t_data *data)
 	if ((size_t)data->width > ft_strlen(string2))
 		string2 = ft_string_width(string2, data);
 	data->ret = ft_strlen(string2);
-	write (1, string2, data->ret);
+	write(1, string2, data->ret);
+	free(string2);
 }

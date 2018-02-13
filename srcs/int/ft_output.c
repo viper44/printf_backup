@@ -16,5 +16,5 @@ void	ft_output(char *output, t_data *data)
 {
 	data->ret = (int)ft_strlen(output);
 	write(1, output, ft_strlen(output));
-	free (output);
+	free(output);
 }

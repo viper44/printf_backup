@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_test.c                                          :+:      :+:    :+:   */
+/*   ft_plus_minus_space.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msemenov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/12 16:41:33 by msemenov          #+#    #+#             */
-/*   Updated: 2018/02/12 16:41:34 by msemenov         ###   ########.fr       */
+/*   Created: 2018/02/12 16:27:06 by msemenov          #+#    #+#             */
+/*   Updated: 2018/02/12 16:27:08 by msemenov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../printf.h"
 
-char	*ft_hash(char *output)
+char	*ft_plus_minus_space(char *output, char *tmp, t_data *data)
 {
-	char *hash;
-	char *ret;
-
-	hash = ft_strnew(1);
-	hash[0] = '0';
-	ret = ft_strjoin(hash, output);
-	free(output);
-	free(hash);
-	return (ret);
+	if (output[0] == '-')
+		tmp[0] = '-';
+	else if (data->plus == 1 && output[0] != '-')
+	{
+		tmp[0] = '+';
+		data->plus = 0;
+	}
+	else if (data->space == 1)
+	{
+		tmp[0] = ' ';
+		data->space = 0;
+	}
+	return (tmp);
 }

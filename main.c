@@ -21,9 +21,9 @@ int	main(void)
 
 	int a = 0;
 	int b = 0;	
-	 a = ft_printf("mine: |%hhS, %hhS\n", 0, L"米米") - 8;
+	 a = ft_printf("mine: |%-05p\n", 0) - 8;
 	 printf("mine len |%d\n", a);
-	 b =    printf("orig: |%hhS, %hhS\n", 0, L"米米") - 8;
+	 b =    printf("orig: |%-05p\n", 0) - 8;
 	 printf("orig len |%d\n", b);
 
 //ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B

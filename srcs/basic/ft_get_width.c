@@ -14,10 +14,10 @@
 
 const char	*ft_get_width(const char *f, t_data *data)
 {
-	if (ft_atoi (f) > 0)
+	if (ft_atoi(f) > 0)
 	{
 		data->width = ft_atoi(f);
-		while(ft_isdigit(*f))
+		while (ft_isdigit(*f))
 			f++;
 		f--;
 	}

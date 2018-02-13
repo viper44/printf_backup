@@ -12,10 +12,10 @@
 
 #include "../../printf.h"
 
-void ft_aligning_char_sprava(char c, t_data *data)
+void	ft_aligning_char_sprava(char c, t_data *data)
 {
-	char *width;
-	int i;
+	char	*width;
+	int		i;
 
 	i = 0;
 	if (data->width > 0)
@@ -30,13 +30,13 @@ void ft_aligning_char_sprava(char c, t_data *data)
 				width[i] = ' ';
 			i++;
 		}
-		write (1, width, ft_strlen(width));
-		write (1, &c, 1);
+		write(1, width, ft_strlen(width));
+		write(1, &c, 1);
 		data->ret = (int)ft_strlen(width) + 1;
-		free (width);
-		return;
+		free(width);
+		return ;
 	}
-	write (1, &c, 1);
+	write(1, &c, 1);
 	data->ret = 1;
 	return ;
 }

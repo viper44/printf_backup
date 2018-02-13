@@ -12,7 +12,7 @@
 
 #include "../../printf.h"
 
-static char  *ft_b(char *ret, int size, int minus)
+static char		*ft_b(char *ret, int size, int minus)
 {
 	size = size - 1 + minus;
 	while (size >= 0)
@@ -23,7 +23,7 @@ static char  *ft_b(char *ret, int size, int minus)
 	return (ret);
 }
 
-static char 	*ft_make_str(int minus, char *ret, int base, unsigned long long int nb)
+static char		*ft_make_str(int minus, char *ret, int base, uint64_t nb)
 {
 	int	size;
 	int	tmp;
@@ -37,7 +37,7 @@ static char 	*ft_make_str(int minus, char *ret, int base, unsigned long long int
 		tmp = nb % base;
 		if (tmp >= 10)
 			ret[size] = ('A' + tmp % 10);
-		else 
+		else
 			ret[size] = tmp + '0';
 		nb = nb / base;
 		size--;
@@ -47,12 +47,12 @@ static char 	*ft_make_str(int minus, char *ret, int base, unsigned long long int
 	return (ret);
 }
 
-char	*itoa_base(long long int value, int base)
+char			*itoa_base(long long int value, int base)
 {
 	unsigned long long int	nb;
-	int minus;
-	int	size;
-	char *ret;
+	int						minus;
+	int						size;
+	char					*ret;
 
 	minus = 0;
 	size = 1;
@@ -63,7 +63,7 @@ char	*itoa_base(long long int value, int base)
 		nb = -value;
 		minus++;
 	}
-	else 
+	else
 		nb = value;
 	while (value != 0)
 	{

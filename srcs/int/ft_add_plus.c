@@ -14,14 +14,14 @@
 
 char	*ft_add_plus(char *tmp)
 {
-	char *plus;
-	char *ptr;
+	char	*plus;
+	char	*ptr;
 
 	ptr = tmp;
 	plus = ft_strnew(1);
 	plus[0] = '+';
 	tmp = ft_strjoin(plus, tmp);
-	free (ptr);
-	free (plus);
+	free(ptr);
+	free(plus);
 	return (tmp);
 }

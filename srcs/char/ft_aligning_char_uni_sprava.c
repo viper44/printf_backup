@@ -32,10 +32,10 @@ static void		ft_mask1(unsigned int nb, t_data *data)
 	mask1 = 192;
 	res = (nb >> 6);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = (nb << 26) >> 26;
 	res = mask | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	if (data->width > 0)
 		data->ret = data->width + 2;
 	else
@@ -53,11 +53,11 @@ static void		ft_mask2(unsigned int nb, t_data *data)
 	mask1 = 224;
 	res = (nb >> 12);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 20) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 26) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	if (data->width > 0)
 		data->ret = data->width + 3;
 	else
@@ -75,38 +75,36 @@ static void		ft_mask3(unsigned int nb, t_data *data)
 	mask1 = 240;
 	res = (nb >> 18);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 14) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 20) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 26)) >> 26;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	if (data->width > 0)
 		data->ret = data->width + 4;
 	else
 		data->ret = data->ret + 4;
 }
 
-void		ft_aligning_char_uni_sprava(int nb, t_data *data)
+void			ft_aligning_char_uni_sprava(int nb, t_data *data)
 {
-	char *width;
-	int i;
+	char	*width;
+	int		i;
 
 	i = 0;
-	width = NULL;	
-
+	width = NULL;
 	if (data->width > 0)
 	{
 		width = ft_strnew(data->width);
-		width[data->width - 1] = '\0';
 		while (i < (data->width))
 		{
 			width[i] = ' ';
 			i++;
 		}
-		write (1, width, ft_strlen(width));
-		free (width);
+		write(1, width, ft_strlen(width));
+		free(width);
 	}
 	if (nb > 127 && nb < 2048)
 		ft_mask1(nb, data);
@@ -114,6 +112,6 @@ void		ft_aligning_char_uni_sprava(int nb, t_data *data)
 		ft_mask2(nb, data);
 	else if (nb > 65535)
 		ft_mask3(nb, data);
-	else 
+	else
 		ft_mask(nb, data);
 }

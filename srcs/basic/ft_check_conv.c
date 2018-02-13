@@ -22,12 +22,12 @@ static int		ft_valid(char const *f)
 		return (0);
 }
 
-const char	*ft_check_conv(const char *format, t_data *data,va_list ptr)
+const char		*ft_check_conv(const char *format, t_data *data, va_list ptr)
 {
 	if (*format == 'd' || *format == 'i' || *format == 'D')
 		ft_output_number(data, ptr, format);
 	if (*format == 'o' || *format == 'O')
-		ft_output_octet(data,ptr, format);
+		ft_output_octet(data, ptr, format);
 	if (*format == 'x')
 		ft_output_hex(data, ptr);
 	if (*format == 'X')
@@ -38,15 +38,15 @@ const char	*ft_check_conv(const char *format, t_data *data,va_list ptr)
 		ft_output_char(data, ptr, format);
 	if (*format == 's')
 		ft_output_string(data, ptr);
-	if(*format == 'U')
+	if (*format == 'U')
 		ft_output_unb_int(data, ptr);
 	if (*format == 'C')
 		ft_output_char_uni(data, ptr);
 	if (*format == 'S')
-		ft_output_string_uni(data,ptr);
+		ft_output_string_uni(data, ptr);
 	if (*format == 'p')
-		ft_output_pointer(data,ptr);
+		ft_output_pointer(data, ptr);
 	if (ft_valid(format))
 		format++;
-	return(format);
+	return (format);
 }

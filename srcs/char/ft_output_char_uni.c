@@ -12,7 +12,7 @@
 
 #include "../../printf.h"
 
-static int ft_MB_CUR_MAX(t_data *data)
+static int	ft_mb_cur_max(t_data *data)
 {
 	if (MB_CUR_MAX == 1)
 	{
@@ -22,17 +22,16 @@ static int ft_MB_CUR_MAX(t_data *data)
 	return (1);
 }
 
-void	ft_output_char_uni(t_data *data, va_list ptr)
+void		ft_output_char_uni(t_data *data, va_list ptr)
 {
-	unsigned int  nb;
+	unsigned int	nb;
 
 	nb = 0;
-
-	nb = va_arg(ptr,unsigned int);	
-	if (!ft_MB_CUR_MAX(data))
+	nb = va_arg(ptr, unsigned int);
+	if (!ft_mb_cur_max(data))
 	{
 		write(1, &nb, 1);
-		return;
+		return ;
 	}
 	if (nb > 127 && nb < 2048)
 		data->width = data->width - 2;

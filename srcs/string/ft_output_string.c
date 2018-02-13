@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../printf.h"
 
-static void ft_NULL(t_data *data)
+static void	ft_null(t_data *data)
 {
 	char *null;
 
@@ -24,13 +23,13 @@ static void ft_NULL(t_data *data)
 		ft_aligning_string_sprava(null, data);
 }
 
-static int 	ft_l(t_data *data, va_list ptr)
+static int	ft_l(t_data *data, va_list ptr)
 {
 	ft_output_string_uni(data, ptr);
 	return (1);
 }
 
-void	ft_output_string(t_data *data, va_list ptr)
+void		ft_output_string(t_data *data, va_list ptr)
 {
 	char *string;
 
@@ -41,12 +40,12 @@ void	ft_output_string(t_data *data, va_list ptr)
 		string = va_arg(ptr, char*);
 		if (string == NULL)
 		{
-			ft_NULL(data);
-			 return ;
+			ft_null(data);
+			return ;
 		}
-	if (data->minus == 1)
-		ft_aligning_string_sleva(string, data);
-	else
-		ft_aligning_string_sprava(string, data);
+		if (data->minus == 1)
+			ft_aligning_string_sleva(string, data);
+		else
+			ft_aligning_string_sprava(string, data);
 	}
 }

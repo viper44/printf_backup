@@ -12,11 +12,11 @@
 
 #include "../../printf.h"
 
-static int 	ft_l(t_data *data, va_list ptr)
+static int	ft_l(t_data *data, va_list ptr)
 {
 	char *point_string;
 
-	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long int)), 8);
+	point_string = unsigned_itoa_base((va_arg(ptr, unsigned long int)), 8);
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -24,11 +24,11 @@ static int 	ft_l(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_ll(t_data *data, va_list ptr)
+static int	ft_ll(t_data *data, va_list ptr)
 {
 	char *point_string;
 
-	point_string = unsigned_itoa_base((va_arg(ptr,unsigned long long int)), 8);
+	point_string = unsigned_itoa_base((va_arg(ptr, unsigned long long int)), 8);
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
@@ -36,10 +36,10 @@ static int 	ft_ll(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_h(t_data *data, va_list ptr)
+static int	ft_h(t_data *data, va_list ptr)
 {
-	unsigned int d;
-	char *point_string;
+	unsigned int	d;
+	char			*point_string;
 
 	d = va_arg(ptr, int);
 	d = (unsigned short)d;
@@ -51,10 +51,10 @@ static int 	ft_h(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_hh(t_data *data, va_list ptr)
+static int	ft_hh(t_data *data, va_list ptr)
 {
-	unsigned int d;
-	char *point_string;
+	unsigned int	d;
+	char			*point_string;
 
 	d = va_arg(ptr, int);
 	d = (unsigned char)d;
@@ -66,10 +66,10 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	return (1);
 }
 
-void	ft_output_octet(t_data *data, va_list ptr, const char *format)
+void		ft_output_octet(t_data *data, va_list ptr, const char *format)
 {
-	unsigned int d;
-	char *point_string;
+	unsigned int	d;
+	char			*point_string;
 
 	if (*format == 'O' && ft_ll(data, ptr))
 		return ;
@@ -83,11 +83,11 @@ void	ft_output_octet(t_data *data, va_list ptr, const char *format)
 		return ;
 	else
 	{
-		d = va_arg(ptr,unsigned int);
+		d = va_arg(ptr, unsigned int);
 		point_string = unsigned_itoa_base(d, 8);
-	if (data->minus == 1)
-		ft_aligning_number_sleva_octet(point_string, data);
-	else
-		ft_aligning_number_sprava_octet(point_string, data);
+		if (data->minus == 1)
+			ft_aligning_number_sleva_octet(point_string, data);
+		else
+			ft_aligning_number_sprava_octet(point_string, data);
 	}
 }

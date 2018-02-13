@@ -15,10 +15,7 @@
 static void		ft_mask(unsigned int nb, t_data *data)
 {
 	write(1, &nb, 1);
-	// if (data->width > 0)
-	// 	data->ret = data->width;
-	// else
-		data->ret = data->ret + 1;
+	data->ret = data->ret + 1;
 }
 
 static void		ft_mask1(unsigned int nb, t_data *data)
@@ -32,10 +29,10 @@ static void		ft_mask1(unsigned int nb, t_data *data)
 	mask1 = 192;
 	res = (nb >> 6);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = (nb << 26) >> 26;
 	res = mask | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	data->ret = data->ret + 2;
 }
 
@@ -50,11 +47,11 @@ static void		ft_mask2(unsigned int nb, t_data *data)
 	mask1 = 224;
 	res = (nb >> 12);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 20) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 26) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	if (data->width > 0)
 		data->ret = data->ret + 3;
 	else
@@ -72,20 +69,20 @@ static void		ft_mask3(unsigned int nb, t_data *data)
 	mask1 = 240;
 	res = (nb >> 18);
 	res = mask1 | res;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 14) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 20) >> 26);
-	write (1, &res, 1);
+	write(1, &res, 1);
 	res = mask | ((nb << 26)) >> 26;
-	write (1, &res, 1);
+	write(1, &res, 1);
 	if (data->width > 0)
 		data->ret = data->ret + 4;
 	else
 		data->ret = data->ret + 4;
 }
 
-void		ft_aligning_string_uni(int nb, t_data *data)
+void			ft_aligning_string_uni(int nb, t_data *data)
 {
 	if (nb > 127 && nb < 2048)
 		ft_mask1(nb, data);
@@ -93,6 +90,6 @@ void		ft_aligning_string_uni(int nb, t_data *data)
 		ft_mask2(nb, data);
 	else if (nb > 65535)
 		ft_mask3(nb, data);
-	else 
+	else
 		ft_mask(nb, data);
 }

@@ -12,11 +12,11 @@
 
 #include "../../printf.h"
 
-static char 	*ft_precision(char *output, t_data *data)
+static char		*ft_precision(char *output, t_data *data)
 {
-	char *tmp;
-	int size_precision;
-	int	size_output;
+	char	*tmp;
+	int		size_precision;
+	int		size_output;
 
 	if (data->plus == 1 || output[0] == '-' || data->space == 1)
 		size_precision = data->precision + 1;
@@ -41,19 +41,18 @@ static char 	*ft_precision(char *output, t_data *data)
 	return (tmp);
 }
 
-static char 	*ft_width(char *tmp, t_data *data)
+static char		*ft_width(char *tmp, t_data *data)
 {
-	int	size_tmp;
-	int	size_tmp2;
+	int		size_tmp;
+	int		size_tmp2;
 	char	*tmp2;
 	char	*tmp_ret;
 
 	size_tmp = ft_strlen(tmp);
-	if (data->plus == 1 && tmp[0] != '-') 
-		tmp = ft_add_plus(tmp);	
-	// if ((data->space == 1 && tmp[0] != '-' && tmp[0] != '+'))
-	// 	tmp = ft_add_space(tmp, data);
-	tmp2 = ft_strnew(size_tmp2 = data->width - ft_strlen(tmp));
+	if (data->plus == 1 && tmp[0] != '-')
+		tmp = ft_add_plus(tmp);
+	size_tmp2 = data->width - ft_strlen(tmp);
+	tmp2 = ft_strnew(size_tmp2);
 	size_tmp2 -= 1;
 	if (data->width > 0 && (data->zero == 0 || data->dot == 1))
 		while (size_tmp2 >= 0)
@@ -61,20 +60,20 @@ static char 	*ft_width(char *tmp, t_data *data)
 	else if (data->precision == 0 && data->zero == 1 && data->dot == 0)
 		while (size_tmp2 >= 0)
 			tmp2[size_tmp2--] = '0';
-	tmp_ret = ft_strjoin (tmp2, tmp);
-	if ((data->plus == 1 || data->negative == 1 || data->space == 1) 
+	tmp_ret = ft_strjoin(tmp2, tmp);
+	if ((data->plus == 1 || data->negative == 1 || data->space == 1)
 		&& data->dot != 1 && data->precision == 0 && data->zero == 1)
 		tmp_ret = ft_kostil(tmp_ret, data);
-	free (tmp2);
-	free (tmp);
+	free(tmp2);
+	free(tmp);
 	return (tmp_ret);
 }
 
-static char 	*ft_plus(char *output)
+static char		*ft_plus(char *output)
 {
-	char *tmp;
-	int size_output;
-	int size_tmp;
+	char	*tmp;
+	int		size_output;
+	int		size_tmp;
 
 	size_output = ft_strlen(output);
 	size_tmp = size_output + 1;
@@ -86,14 +85,14 @@ static char 	*ft_plus(char *output)
 		size_output--;
 	}
 	tmp[0] = '+';
-	free (output);
+	free(output);
 	return (tmp);
 }
 
-static char 	*ft_special_case(t_data *data)
+static char		*ft_special_case(t_data *data)
 {
-	int size;
-	char *tmp;
+	int		size;
+	char	*tmp;
 
 	if (data->plus == 1)
 		size = 1;
@@ -105,7 +104,7 @@ static char 	*ft_special_case(t_data *data)
 	return (tmp);
 }
 
-void	ft_aligning_number_sprava (char *output, t_data *data)
+void			ft_aligning_number_sprava(char *output, t_data *data)
 {
 	char *tmp;
 

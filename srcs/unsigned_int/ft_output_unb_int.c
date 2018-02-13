@@ -14,14 +14,13 @@
 
 void	ft_output_unb_int(t_data *data, va_list ptr)
 {
-	char *point_string;
-	unsigned long long d;
-	
-	d = va_arg(ptr,unsigned long long int);
+	char				*point_string;
+	unsigned long long	d;
+
+	d = va_arg(ptr, unsigned long long int);
 	point_string = unsigned_itoa_base(d, 10);
 	if (data->minus == 1)
 		ft_aligning_number_sleva_octet(point_string, data);
 	else
 		ft_aligning_number_sprava_octet(point_string, data);
-
 }

@@ -12,11 +12,11 @@
 
 #include "../../printf.h"
 
-static char 	*ft_precision(char *output, t_data *data)
+static char		*ft_precision(char *output, t_data *data)
 {
-	char *tmp;
-	int size_precision;
-	int	size_output;
+	char	*tmp;
+	int		size_precision;
+	int		size_output;
 
 	size_precision = data->precision;
 	size_output = ft_strlen(output);
@@ -29,13 +29,14 @@ static char 	*ft_precision(char *output, t_data *data)
 	return (tmp);
 }
 
-static char 	*ft_width(char *tmp, t_data *data)
+static char		*ft_width(char *tmp, t_data *data)
 {
-	int	size_tmp2;
+	int		size_tmp2;
 	char	*tmp2;
 	char	*tmp_ret;
 
-	tmp2 = ft_strnew(size_tmp2 = data->width - ft_strlen(tmp));
+	size_tmp2 = data->width - ft_strlen(tmp);
+	tmp2 = ft_strnew(size_tmp2);
 	size_tmp2 -= 1;
 	if (data->width > 0 && (data->zero == 0 || data->dot == 1))
 		while (size_tmp2 >= 0)
@@ -44,19 +45,19 @@ static char 	*ft_width(char *tmp, t_data *data)
 		while (size_tmp2 >= 0)
 			tmp2[size_tmp2--] = '0';
 	tmp_ret = ft_strjoin(tmp2, tmp);
-	free (tmp2);
-	free (tmp);
+	free(tmp2);
+	free(tmp);
 	return (tmp_ret);
 }
 
-
-void	ft_aligning_number_sprava_hex_b (char *output, t_data *data)
+void			ft_aligning_number_sprava_hex_b(char *output, t_data *data)
 {
 	if (output[0] == '0' && data->dot == 1 && data->precision == 0)
 		output[0] = '\0';
 	if (data->precision >= (int)ft_strlen(output))
 		output = ft_precision(output, data);
-	if ((int)ft_strlen(output) + 1 >= data->width && data->hash == 1 && output[0] != '\0')
+	if ((int)ft_strlen(output) + 1 >= data->width &&
+		data->hash == 1 && output[0] != '\0')
 		output = ft_hash_hex_b(output);
 	if (data->width > (int)ft_strlen(output))
 	{

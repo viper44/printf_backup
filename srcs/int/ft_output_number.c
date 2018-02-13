@@ -12,7 +12,7 @@
 
 #include "../../printf.h"
 
-static int 	ft_l(t_data *data, va_list ptr)
+static int		ft_l(t_data *data, va_list ptr)
 {
 	char *point_string;
 
@@ -26,7 +26,7 @@ static int 	ft_l(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_ll(t_data *data, va_list ptr)
+static int		ft_ll(t_data *data, va_list ptr)
 {
 	char *point_string;
 
@@ -40,10 +40,10 @@ static int 	ft_ll(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_h(t_data *data, va_list ptr)
+static int		ft_h(t_data *data, va_list ptr)
 {
-	int d;
-	char *point_string;
+	int		d;
+	char	*point_string;
 
 	d = va_arg(ptr, int);
 	d = (short)d;
@@ -57,10 +57,10 @@ static int 	ft_h(t_data *data, va_list ptr)
 	return (1);
 }
 
-static int 	ft_hh(t_data *data, va_list ptr)
+static int		ft_hh(t_data *data, va_list ptr)
 {
-	int d;
-	char *point_string;
+	int		d;
+	char	*point_string;
 
 	d = va_arg(ptr, int);
 	d = (signed char)d;
@@ -74,10 +74,10 @@ static int 	ft_hh(t_data *data, va_list ptr)
 	return (1);
 }
 
-void	ft_output_number(t_data *data, va_list ptr, const char *f)
+void			ft_output_number(t_data *data, va_list ptr, const char *f)
 {
-	int d;
-	char *point_string;
+	int		d;
+	char	*point_string;
 
 	if (*f == 'D' && ft_ll(data, ptr))
 		return ;
@@ -94,10 +94,10 @@ void	ft_output_number(t_data *data, va_list ptr, const char *f)
 		d = va_arg(ptr, int);
 		point_string = itoa_base(d, 10);
 		if (point_string[0] == '-')
-		data->negative = 1;
-	if (data->minus == 1)
-		ft_aligning_number_sleva(point_string, data);
-	else
-		ft_aligning_number_sprava(point_string, data);
+			data->negative = 1;
+		if (data->minus == 1)
+			ft_aligning_number_sleva(point_string, data);
+		else
+			ft_aligning_number_sprava(point_string, data);
 	}
 }
